@@ -9,7 +9,7 @@ DNA_FILE_NAME = "DNA.txt"
 
 
 @api.route("/genes/find/<gene>", methods=['GET'])
-def searchSpecifiedGen(gene):
+def findGene(gene):
     searchResult = _geneFinder.find(Gene(gene))
 
     if searchResult == GeneSearchResults.INVALID_GENE:
