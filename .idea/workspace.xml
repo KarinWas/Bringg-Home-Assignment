@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fd208cf0-6865-48dc-8640-385b3690bc15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/FileHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gene.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GeneFinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/GeneFinder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,15 +154,6 @@
     <state x="664" y="-962" width="607" height="804" key="find.popup/0.0.1536.824/8.-1080.1920.1040@8.-1080.1920.1040" timestamp="1594672977024" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/GeneFinder.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="line" />

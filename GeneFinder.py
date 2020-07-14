@@ -41,6 +41,6 @@ class GeneFinder:
 
             return GeneSearchResults.FOUND
 
-    def calculateNextCombination(self, currGeneCombination, geneSize, nextBuffer):
+    def calculateNextCombination(self, currGeneCombination, geneSize, nextBuffer) -> str:
         lastCombinationSuffix = currGeneCombination[-geneSize:]
         return f"{lastCombinationSuffix}{nextBuffer}"
