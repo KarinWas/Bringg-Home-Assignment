@@ -3,14 +3,14 @@ from Gene import Gene
 from GeneFinder import GeneFinder, GeneSearchResults
 
 api = Flask(__name__)
-_geneFinder = None
+__geneFinder = None
 BUFFER_SIZE = 1024
 DNA_FILE_NAME = "DNA.txt"
 
 
 @api.route("/genes/find/<gene>", methods=['GET'])
 def findGene(gene):
-    searchResult = _geneFinder.find(Gene(gene))
+    searchResult = __geneFinder.find(Gene(gene))
 
     if searchResult == GeneSearchResults.INVALID_GENE:
         return "Bad request", 400
@@ -20,5 +20,5 @@ def findGene(gene):
 
 
 if __name__ == '__main__':
-    _geneFinder = GeneFinder(DNA_FILE_NAME, BUFFER_SIZE)
+    __geneFinder = GeneFinder(DNA_FILE_NAME, BUFFER_SIZE)
     api.run("localhost", 8080)

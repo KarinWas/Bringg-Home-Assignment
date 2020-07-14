@@ -13,34 +13,34 @@ END_OF_FILE = ""
 
 
 class GeneFinder:
-    _dnaFileName: str
-    _bufferSize: int
+    __dnaFileName: str
+    __bufferSize: int
 
     def __init__(self, dnaFileName: str, bufferSize: int):
         FileHelper.verifyFileExist(dnaFileName)
-        self._dnaFileName = dnaFileName
-        self._bufferSize = bufferSize
+        self.__dnaFileName = dnaFileName
+        self.__bufferSize = bufferSize
 
     def find(self, geneToFind: Gene) -> GeneSearchResults:
         if not geneToFind.isValid():
             return GeneSearchResults.INVALID_GENE
 
-        return self.searchInDNA(geneToFind)
+        return self.__searchInDNA(geneToFind)
 
-    def searchInDNA(self, geneToFind: Gene):
-        with open(self._dnaFileName, 'rt') as dnaFile:
+    def __searchInDNA(self, geneToFind: Gene):
+        with open(self.__dnaFileName, 'rt') as dnaFile:
             currGeneCombination = dnaFile.read(geneToFind.size)
             wantedGene = geneToFind.string
             geneSize = geneToFind.size
 
             while wantedGene not in currGeneCombination:
-                nextBuffer = dnaFile.read(self._bufferSize)
+                nextBuffer = dnaFile.read(self.__bufferSize)
                 if nextBuffer == END_OF_FILE:
                     return GeneSearchResults.NOT_FOUND
-                currGeneCombination = self.calculateNextCombination(currGeneCombination, geneSize, nextBuffer)
+                currGeneCombination = self.__calculateNextCombination(currGeneCombination, geneSize, nextBuffer)
 
             return GeneSearchResults.FOUND
 
-    def calculateNextCombination(self, currGeneCombination, geneSize, nextBuffer) -> str:
+    def __calculateNextCombination(self, currGeneCombination, geneSize, nextBuffer) -> str:
         lastCombinationSuffix = currGeneCombination[-geneSize:]
         return f"{lastCombinationSuffix}{nextBuffer}"
