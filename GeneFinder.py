@@ -2,13 +2,14 @@ from Gene import Gene
 from enum import Enum
 from FileHelper import FileHelper
 
-END_OF_FILE = ""
-
 
 class GeneSearchResults(Enum):
     INVALID_GENE = 1
     FOUND = 2
     NOT_FOUND = 3
+
+
+END_OF_FILE = ""
 
 
 class GeneFinder:
@@ -24,17 +25,22 @@ class GeneFinder:
         if not geneToFind.isValid():
             return GeneSearchResults.INVALID_GENE
 
-        return self.searchInFile(geneToFind)
+        return self.searchInDNA(geneToFind)
 
-    def searchInFile(self, geneToFind: Gene):
+    def searchInDNA(self, geneToFind: Gene):
         with open(self._dnaFileName, 'rt') as dnaFile:
             currGeneCombination = dnaFile.read(geneToFind.size)
-            findGeneString = geneToFind.asString
+            wantedGene = geneToFind.string
+            geneSize = geneToFind.size
 
-            while findGeneString not in currGeneCombination:
+            while wantedGene not in currGeneCombination:
                 nextBuffer = dnaFile.read(self._bufferSize)
                 if nextBuffer == END_OF_FILE:
                     return GeneSearchResults.NOT_FOUND
-                currGeneCombination = currGeneCombination[-geneToFind.size:] + nextBuffer
+                currGeneCombination = self.calculateNextCombination(currGeneCombination, geneSize, nextBuffer)
 
             return GeneSearchResults.FOUND
+
+    def calculateNextCombination(self, currGeneCombination, geneSize, nextBuffer):
+        lastCombinationSuffix = currGeneCombination[-geneSize:]
+        return f"{lastCombinationSuffix}{nextBuffer}"

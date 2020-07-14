@@ -3,6 +3,6 @@ from os import path
 
 class FileHelper:
     @staticmethod
-    def verifyFileExist(dnaFileName):
-        if not path.exists(dnaFileName):
+    def verifyFileExist(filename: str):
+        if not path.exists(filename):
             raise FileNotFoundError

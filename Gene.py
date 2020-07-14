@@ -1,8 +1,9 @@
-PREFIX = "AAAAAAAAAAA"
+GENE_PREFIX = "AAAAAAAAAAA"
 
 
 class Gene:
     _gene: str
+    _size: int
 
     def __init__(self, gene: str):
         self._gene = str.upper(gene)
@@ -13,8 +14,8 @@ class Gene:
         return self._size
 
     @property
-    def asString(self) -> str:
+    def string(self) -> str:
         return self._gene
 
     def isValid(self) -> bool:
-        return self._gene.startswith(PREFIX)
+        return self._gene.startswith(GENE_PREFIX)
